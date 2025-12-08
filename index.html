@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Dashboard Personalizado para Holded | Métricas Empresariales en Tiempo Real | Agencia Atlas</title>
+    <meta name="description" content="Dashboard personalizado para Holded. Visualiza facturas, gastos, beneficios y métricas de tu negocio en tiempo real. Desarrollado por Agencia Atlas, expertos en soluciones digitales.">
+    <meta name="keywords" content="dashboard holded, holded dashboard, métricas holded, panel de control holded, facturación holded, dashboard empresarial, agencia atlas, software contabilidad, ERP holded, integración holded">
+    <meta name="author" content="Agencia Atlas">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dashboardholded.es">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dashboardholded.es">
+    <meta property="og:title" content="Dashboard Personalizado para Holded | Agencia Atlas">
+    <meta property="og:description" content="Transforma los datos de Holded en decisiones inteligentes. Dashboard personalizado con métricas en tiempo real, gestión de facturas y análisis financiero.">
+    <meta property="og:image" content="https://dashboardholded.es/og-image.jpg">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dashboardholded.es">
+    <meta name="twitter:title" content="Dashboard Personalizado para Holded | Agencia Atlas">
+    <meta name="twitter:description" content="Transforma los datos de Holded en decisiones inteligentes. Dashboard personalizado con métricas en tiempo real.">
+    <meta name="twitter:image" content="https://dashboardholded.es/og-image.jpg">
+
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Dashboard para Holded",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Dashboard personalizado que se integra con Holded para visualizar métricas empresariales, facturas, gastos y beneficios en tiempo real.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Solicita presupuesto personalizado"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "Agencia Atlas",
+            "url": "https://theatlas.es",
+            "logo": "https://theatlas.es/logo.png"
+        },
+        "featureList": [
+            "Métricas financieras en tiempo real",
+            "Gestión de facturas emitidas y recibidas",
+            "Análisis de gastos y beneficios",
+            "Resumen trimestral de IVA",
+            "Descarga masiva de documentos",
+            "Integración directa con API de Holded"
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Agencia Atlas",
+        "url": "https://theatlas.es",
+        "logo": "https://theatlas.es/logo.png",
+        "description": "Agencia de desarrollo web y soluciones digitales personalizadas",
+        "sameAs": [
+            "https://www.linkedin.com/company/agencia-atlas",
+            "https://twitter.com/agenciaatlas"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "url": "https://theatlas.es/contacto"
+        }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --text: #334155;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-footer {
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-preview {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+        }
+
+        .dashboard-preview:hover {
+            transform: scale(1.02);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-card.card-1 {
+            top: 10%;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-card.card-2 {
+            bottom: 20%;
+            left: -30px;
+            animation-delay: 1s;
+        }
+
+        .floating-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .floating-card .icon.green { background: var(--primary-light); }
+        .floating-card .icon.blue { background: #dbeafe; }
+
+        .floating-card .metric {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .floating-card .label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 2rem;
+            background: var(--secondary);
+            color: white;
+        }
+
+        .benefits .section-header h2 {
+            color: white;
+        }
+
+        .benefits .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: background 0.3s;
+        }
+
+        .benefits-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-check {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .benefit-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .benefits-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .benefits-image img {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* How it Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--primary-light);
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+
+        .step h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Integration Section */
+        .integration {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .integration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .integration-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .integration-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tech-badge {
+            background: var(--background);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .holded-logo {
+            max-width: 100%;
+            border-radius: 16px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: var(--gradient);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn-primary {
+            background: white;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer ul a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            .benefits-grid,
+            .integration-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .contact-feature strong {
+            display: block;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-feature p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-weight: 400 !important;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-label span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .checkbox-label a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-success {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .form-success h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-success p {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 1.5rem;
+            }
+
+            .contact-info h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="https://theatlas.es" class="logo">
+            <img src="https://theatlas.es/wp-content/uploads/2025/09/Logo-Atlas-25@3x.png" alt="Agencia Atlas" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Funcionalidades</a></li>
+            <li><a href="#benefits">Beneficios</a></li>
+            <li><a href="#how-it-works">Como funciona</a></li>
+            <li><a href="#contacto" class="nav-cta">Solicitar Demo</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">&#9776;</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>&#9889;</span> Integrado con Holded API
+                </div>
+                <h1>Dashboard <span>Personalizado</span> para Holded</h1>
+                <p>Transforma los datos de tu cuenta de Holded en un panel de control visual e intuitivo. Toma decisiones informadas con metricas en tiempo real.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">
+                        Solicitar Presupuesto
+                        <span>&#8594;</span>
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        Ver funcionalidades
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/dashboard-preview.png" alt="Dashboard para Holded - Vista previa del panel de metricas empresariales" class="dashboard-preview" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 500%22%3E%3Crect fill=%22%23f1f5f9%22 width=%22800%22 height=%22500%22 rx=%2220%22/%3E%3Crect fill=%22%231e293b%22 x=%220%22 y=%220%22 width=%22200%22 height=%22500%22 rx=%2220%22/%3E%3Crect fill=%22%2310b981%22 x=%2220%22 y=%2220%22 width=%22160%22 height=%2240%22 rx=%228%22/%3E%3Crect fill=%22%23334155%22 x=%2220%22 y=%2280%22 width=%22120%22 height=%2216%22 rx=%224%22/%3E%3Crect fill=%22%23334155%22 x=%2220%22 y=%22110%22 width=%22140%22 height=%2216%22 rx=%224%22/%3E%3Crect fill=%22%23334155%22 x=%2220%22 y=%22140%22 width=%22100%22 height=%2216%22 rx=%224%22/%3E%3Crect fill=%22%23334155%22 x=%2220%22 y=%22170%22 width=%22130%22 height=%2216%22 rx=%224%22/%3E%3Crect fill=%22white%22 x=%22230%22 y=%2230%22 width=%22170%22 height=%22120%22 rx=%2212%22/%3E%3Crect fill=%22%2310b981%22 x=%22250%22 y=%2250%22 width=%2250%22 height=%2250%22 rx=%228%22/%3E%3Crect fill=%22white%22 x=%22420%22 y=%2230%22 width=%22170%22 height=%22120%22 rx=%2212%22/%3E%3Crect fill=%22%233b82f6%22 x=%22440%22 y=%2250%22 width=%2250%22 height=%2250%22 rx=%228%22/%3E%3Crect fill=%22white%22 x=%22610%22 y=%2230%22 width=%22170%22 height=%22120%22 rx=%2212%22/%3E%3Crect fill=%22%23f59e0b%22 x=%22630%22 y=%2250%22 width=%2250%22 height=%2250%22 rx=%228%22/%3E%3Crect fill=%22white%22 x=%22230%22 y=%22170%22 width=%22550%22 height=%22300%22 rx=%2212%22/%3E%3C/svg%3E'">
+
+                <div class="floating-card card-1">
+                    <div class="icon green">&#128200;</div>
+                    <div>
+                        <div class="metric">+24.5%</div>
+                        <div class="label">Beneficio mensual</div>
+                    </div>
+                </div>
+
+                <div class="floating-card card-2">
+                    <div class="icon blue">&#128196;</div>
+                    <div>
+                        <div class="metric">156</div>
+                        <div class="label">Facturas este mes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Todo lo que necesitas en un solo lugar</h2>
+                <p>Un dashboard completo que centraliza toda la informacion financiera de tu negocio desde Holded</p>
+            </div>
+
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">&#128202;</div>
+                    <h3>Metricas en Tiempo Real</h3>
+                    <p>Visualiza facturacion, gastos, beneficios y margenes actualizados al instante desde tu cuenta de Holded.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">&#128196;</div>
+                    <h3>Gestion de Facturas</h3>
+                    <p>Accede rapidamente a todas tus facturas emitidas y recibidas. Busca, filtra y descarga documentos PDF.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">&#128176;</div>
+                    <h3>Control de Gastos</h3>
+                    <p>Monitoriza todos tus gastos y facturas de proveedores en un panel centralizado y facil de usar.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">&#128197;</div>
+                    <h3>Resumen Trimestral</h3>
+                    <p>Informes trimestrales automaticos con calculo de IVA soportado, repercutido y diferencia a liquidar.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">&#128229;</div>
+                    <h3>Descarga Masiva</h3>
+                    <p>Exporta multiples facturas o gastos en un solo ZIP. Ideal para contabilidad y auditorias.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">&#128270;</div>
+                    <h3>Busqueda Avanzada</h3>
+                    <p>Encuentra cualquier documento por numero de factura, nombre de cliente o rango de fechas.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Por que elegir nuestro Dashboard</h2>
+                <p>Desarrollado especificamente para empresas que usan Holded y necesitan mas control</p>
+            </div>
+
+            <div class="benefits-grid">
+                <ul class="benefits-list">
+                    <li>
+                        <div class="benefit-check">&#10003;</div>
+                        <div class="benefit-content">
+                            <h4>Ahorra tiempo cada dia</h4>
+                            <p>Deja de navegar entre menus. Toda tu informacion financiera en una sola pantalla.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="benefit-check">&#10003;</div>
+                        <div class="benefit-content">
+                            <h4>Decisiones basadas en datos</h4>
+                            <p>Visualiza tendencias y metricas clave para tomar decisiones estrategicas informadas.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="benefit-check">&#10003;</div>
+                        <div class="benefit-content">
+                            <h4>Preparado para tu gestor</h4>
+                            <p>Descarga masiva de documentos en un clic. Facilita el trabajo con tu asesoria.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="benefit-check">&#10003;</div>
+                        <div class="benefit-content">
+                            <h4>100% Personalizable</h4>
+                            <p>Adaptamos el dashboard a las necesidades especificas de tu negocio.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="benefits-image">
+                    <img src="/dashboard-metrics.png" alt="Metricas del dashboard empresarial para Holded" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 500 400%22%3E%3Crect fill=%22%23f1f5f9%22 width=%22500%22 height=%22400%22 rx=%2216%22/%3E%3Crect fill=%22%2310b981%22 x=%2230%22 y=%2230%22 width=%22200%22 height=%22100%22 rx=%2212%22/%3E%3Crect fill=%22%233b82f6%22 x=%22260%22 y=%2230%22 width=%22200%22 height=%22100%22 rx=%2212%22/%3E%3Crect fill=%22%23f59e0b%22 x=%2230%22 y=%22160%22 width=%22200%22 height=%22100%22 rx=%2212%22/%3E%3Crect fill=%22%238b5cf6%22 x=%22260%22 y=%22160%22 width=%22200%22 height=%22100%22 rx=%2212%22/%3E%3Crect fill=%22white%22 x=%2230%22 y=%22290%22 width=%22430%22 height=%2280%22 rx=%2212%22/%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Como funciona</h2>
+                <p>Implementacion rapida y sencilla en solo 4 pasos</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Contacta con nosotros</h3>
+                    <p>Cuentanos tus necesidades y que metricas son importantes para tu negocio.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Personalizamos tu Dashboard</h3>
+                    <p>Adaptamos el panel a tus requerimientos especificos y flujos de trabajo.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Conectamos con Holded</h3>
+                    <p>Integracion segura con tu cuenta de Holded mediante su API oficial.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Empieza a usar</h3>
+                    <p>Accede a tu dashboard desde cualquier dispositivo y empieza a tomar mejores decisiones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration">
+        <div class="section-container">
+            <div class="integration-content">
+                <div class="integration-text">
+                    <h2>Integracion oficial con Holded API</h2>
+                    <p>Nuestro dashboard se conecta directamente con la API oficial de Holded, garantizando una sincronizacion segura y en tiempo real de todos tus datos financieros.</p>
+                    <p>No necesitas exportar archivos manualmente ni preocuparte por datos desactualizados. Todo se sincroniza automaticamente.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">&#128274; Conexion Segura HTTPS</span>
+                        <span class="tech-badge">&#9889; Tiempo Real</span>
+                        <span class="tech-badge">&#128202; API REST</span>
+                        <span class="tech-badge">&#9989; Holded Oficial</span>
+                    </div>
+                </div>
+
+                <div>
+                    <img src="/holded-integration.png" alt="Integracion con Holded API" class="holded-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%231e293b%22 width=%22400%22 height=%22300%22 rx=%2216%22/%3E%3Crect fill=%22%2310b981%22 x=%2250%22 y=%22100%22 width=%22120%22 height=%22100%22 rx=%2260%22/%3E%3Crect fill=%22%233b82f6%22 x=%22230%22 y=%22100%22 width=%22120%22 height=%22100%22 rx=%2212%22/%3E%3Cpath d=%22M170 150 L230 150%22 stroke=%22%2310b981%22 stroke-width=%224%22 stroke-dasharray=%228%22/%3E%3Ctext x=%22110%22 y=%22160%22 fill=%22white%22 font-family=%22Arial%22 font-size=%2216%22 text-anchor=%22middle%22%3EHolded%3C/text%3E%3Ctext x=%22290%22 y=%22160%22 fill=%22white%22 font-family=%22Arial%22 font-size=%2216%22 text-anchor=%22middle%22%3EDashboard%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contacto" class="contact-section">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Solicita tu Demo Gratuita</h2>
+                    <p>Cuentanos sobre tu negocio y te mostraremos como el dashboard puede ayudarte a tomar mejores decisiones.</p>
+
+                    <div class="contact-features">
+                        <div class="contact-feature">
+                            <span class="contact-icon">&#9889;</span>
+                            <div>
+                                <strong>Respuesta rapida</strong>
+                                <p>Te contactamos en menos de 24h</p>
+                            </div>
+                        </div>
+                        <div class="contact-feature">
+                            <span class="contact-icon">&#128187;</span>
+                            <div>
+                                <strong>Demo personalizada</strong>
+                                <p>Adaptada a tu sector y necesidades</p>
+                            </div>
+                        </div>
+                        <div class="contact-feature">
+                            <span class="contact-icon">&#128274;</span>
+                            <div>
+                                <strong>Sin compromiso</strong>
+                                <p>Consulta gratuita y sin obligacion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <!-- Typeform Embed -->
+                    <div data-tf-live="01KBZSJ9VJBHT8FC55MTJDG4HH"></div>
+                    <script src="//embed.typeform.com/next/embed.js"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Lleva tu negocio al siguiente nivel</h2>
+            <p>Transforma los datos de Holded en decisiones inteligentes con un dashboard a medida.</p>
+            <a href="#contacto" class="btn btn-primary">
+                Solicitar Demo Gratuita
+                <span>&#8594;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="https://theatlas.es" class="logo">
+                    <img src="https://theatlas.es/wp-content/uploads/2025/09/Logo-Atlas-25@3x.png" alt="Agencia Atlas" class="logo-img logo-footer">
+                </a>
+                <p>Desarrollamos soluciones digitales personalizadas para empresas que buscan optimizar sus procesos y tomar mejores decisiones basadas en datos.</p>
+            </div>
+
+            <div>
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="https://theatlas.es/servicios/desarrollo-web">Desarrollo Web</a></li>
+                    <li><a href="https://theatlas.es/servicios/dashboards">Dashboards</a></li>
+                    <li><a href="https://theatlas.es/servicios/integraciones">Integraciones API</a></li>
+                    <li><a href="https://theatlas.es/servicios/automatizacion">Automatizacion</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="https://theatlas.es/sobre-nosotros">Sobre Nosotros</a></li>
+                    <li><a href="https://theatlas.es/portfolio">Portfolio</a></li>
+                    <li><a href="https://theatlas.es/blog">Blog</a></li>
+                    <li><a href="https://theatlas.es/contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="https://theatlas.es/privacidad">Politica de Privacidad</a></li>
+                    <li><a href="https://theatlas.es/cookies">Politica de Cookies</a></li>
+                    <li><a href="https://theatlas.es/legal">Aviso Legal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Agencia Atlas. Todos los derechos reservados.</p>
+            <p>Desarrollado con &#9829; en Espana</p>
+        </div>
+    </footer>
+
+    <!-- Structured Data for FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Que es un dashboard para Holded?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un dashboard para Holded es un panel de control visual que se conecta con tu cuenta de Holded mediante su API oficial para mostrar metricas financieras, facturas, gastos y otros datos importantes de tu negocio en tiempo real."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Es segura la conexion con Holded?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Si, utilizamos la API oficial de Holded con conexiones HTTPS seguras. Tu API Key se almacena de forma segura y nunca compartimos tus datos con terceros."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Puedo personalizar el dashboard?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutamente. Cada dashboard se personaliza segun las necesidades especificas de tu negocio. Podemos anadir metricas personalizadas, cambiar el diseno y adaptar las funcionalidades a tu flujo de trabajo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuanto tiempo tarda la implementacion?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "La implementacion tipica tarda entre 1-2 semanas dependiendo del nivel de personalizacion requerido. El dashboard basico puede estar operativo en pocos dias."
+                }
+            }
+        ]
+    }
+    </script>
+
+</body>
+</html>
